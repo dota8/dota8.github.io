@@ -1,39 +1,13 @@
 <!DOCTYPE HTML>
 <html>
-
-<!-- Mirrored from w3help.org/tests/BT9035/removeNode.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:49 GMT -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<script type="text/javascript">
-if(window.Node&&!window.opera){
-	Node.prototype.removeNode=function(removeChildren){
-		if(removeChildren||!this.hasChildNodes()){
-			return this.parentNode.removeChild(this);
-		}
-		var $parent=this.parentNode;
-		var $nextSibling=this.nextSibling;
-		var $childNodes=$parent.removeChild(this).childNodes;
-		while($childNodes.length){
-			$nextSibling?$parent.insertBefore($childNodes[0],$nextSibling):$parent.appendChild($childNodes[0]);
-		}
-		return this;
-	}
-}
-</script>
-<script type="text/javascript">
-function remove(removeChildren){
-	var $list=document.getElementsByTagName("h1");
-	if($list[0])alert($list[0].removeNode(removeChildren).innerHTML);
-}
-</script>
-</head>
-<body>
-	<h1>Item <sup>1</sup></h1>
-	<h1>Item <sup>2</sup></h1>
-	<h1>Item <sup>3</sup></h1>
-	<button onclick="remove(true);">Remove first "H1 element" and it's child nodes.</button>
-	<button onclick="remove(false);">Remove first "H1 element", keep it's child nodes.</button>
-</body>
-
-<!-- Mirrored from w3help.org/tests/BT9035/removeNode.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:49 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <h1>Item <sup>1</sup></h1>
+    <h1>Item <sup>2</sup></h1>
+    <h1>Item <sup>3</sup></h1>
+    <button onclick="remove(true);">Remove first "H1 element" and it's child nodes.</button><button
+        onclick="remove(false);">Remove first "H1 element", keep it's child nodes.</button>
+  </body>
 </html>

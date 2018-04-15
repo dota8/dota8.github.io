@@ -1,73 +1,50 @@
 <html>
-
-<!-- Mirrored from w3help.org/tests/BX9020/src.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:58 GMT -->
-<head>
-<meta charset="gbk" />
-<style>
-	body, table { font:12px Arial; }
-	table { border-collapse:collapse; }
-	th, td { border:1px solid #666; }
-	th { background:#ddd; text-align:right; }
-</style>
-<script>
-	function $(id) { return document.getElementById(id); }
-	
-	window.onload = function () {
-		$("info1").innerHTML = $("im").src.replace(/.+\/(.+\.[^\?]+)(?:\?.+)?/g, '$1');
-		$("info2").innerHTML = decodeURI($("im").src.replace(/.+\/(.+\.[^\?]+)(?:\?.+)?/g, '$1'));
-		$("info3").innerHTML = $("ii").src.replace(/.+\/(.+\.[^\?]+)(?:\?.+)?/g, '$1');
-		$("info4").innerHTML = decodeURI($("ii").src.replace(/.+\/(.+\.[^\?]+)(?:\?.+)?/g, '$1'));
-		$("info5").innerHTML = $("sc").src.replace(/.+\/(.+\.[^\?]+)(?:\?.+)?/g, '$1');
-		$("info6").innerHTML = decodeURI($("sc").src.replace(/.+\/(.+\.[^\?]+)(?:\?.+)?/g, '$1'));
-	}
-</script>
-</head>
-<body>
-<div>
-	<h3>IMG</h3>
-	<img id="im" src="%c2%b9%c3%88%c2%b8%c3%a8.html" />
-	<table>
-		<tr>
-			<th>src</th>
-			<td id="info1"></td>
-		</tr>
-		<tr>
-			<th>decodeURI src</th>
-			<td id="info2"></td>
-		</tr>
-	</table>
-</div>
-<br />
-<div>
-	<h3>INPUT[type="image"]</h3>
-	<input id="ii" type="image" src="%c2%b9%c3%88%c2%b8%c3%a8.html" />
-	<table>
-		<tr>
-			<th>src</th>
-			<td id="info3"></td>
-		</tr>
-		<tr>
-			<th>decodeURI src</th>
-			<td id="info4"></td>
-		</tr>
-	</table>
-</div>
-<br />
-<div>
-	<h3>SCRIPT</h3>
-	<script id="sc" src="%c2%b9%c3%88%c2%b8%c3%a8-2.html"></script>
-	<table>
-		<tr>
-			<th>src</th>
-			<td id="info5"></td>
-		</tr>
-		<tr>
-			<th>decodeURI src</th>
-			<td id="info6"></td>
-		</tr>
-	</table>
-</div>
-</body>
-
-<!-- Mirrored from w3help.org/tests/BX9020/src.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:12:00 GMT -->
+  <head>
+    <meta charset="gbk">
+  </head>
+  <body>
+    <div>
+      <h3>IMG</h3>
+      <img id="im" src="%c2%b9%c3%88%c2%b8%c3%a8.html">
+      <table>
+        <tr>
+          <th>src</th>
+          <td id="info1"></td>
+        </tr>
+        <tr>
+          <th>decodeURI src</th>
+          <td id="info2"></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div>
+      <h3>INPUT[type="image"]</h3>
+      <input id="ii" type="image" src="%c2%b9%c3%88%c2%b8%c3%a8.html">
+      <table>
+        <tr>
+          <th>src</th>
+          <td id="info3"></td>
+        </tr>
+        <tr>
+          <th>decodeURI src</th>
+          <td id="info4"></td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div>
+      <h3>SCRIPT</h3>
+      <table>
+        <tr>
+          <th>src</th>
+          <td id="info5"></td>
+        </tr>
+        <tr>
+          <th>decodeURI src</th>
+          <td id="info6"></td>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>

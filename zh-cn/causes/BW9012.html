@@ -1,212 +1,92 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-
-<!-- Mirrored from w3help.org/zh-cn/causes/BW9012 by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:04:53 GMT -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>BW9012: Chrome Safari 中空行内非替换元素在某些情况下不占用文档流渲染空间 - W3Help</title>
-<meta name="keywords" content="webkit, Chrome, Safari, inline, non-replace, inline, element, 空文本节点, 空非替换行内元素, 渲染, 消失, 隐藏" />
-<meta name="description" content="BW9012: Chrome Safari 中空行内非替换元素在某些情况下不占用文档流渲染空间" />
-<link rel="stylesheet" type="text/css" href="../css/common.css" media="all" />
-<link rel="stylesheet" type="text/css" href="../css/article.css" media="all" />
-<script type="text/javascript" src="../js/global.js"></script>
-</head>
-<body>
-<div id="w3h_container">
-  <div id="w3h_header">
-    <div class="header_sidebar">
-      <h1 class="logo"><a href="../../index.html"><span>W3Help</span></a></h1>
-    </div>
-    <div class="header_content">
-      <ul class="navigation">
-        <li class="first_item"><a href="../../index.html">首页</a></li>
-        <li><a href="../home/events.html">活动</a></li>
-        <li><a href="../home/news.html">新闻</a></li>
-        <li><a href="../home/forum.html">论坛</a></li>
-        <li class="last_item"><a href="../home/about.html">关于我们</a></li>
-        <li class="search_item">
-          <form action="http://w3help.org/zh-cn/home/search.html" method="get">
-            <p>
-              <input name="key" id="keyInput" value="" onfocus="focusKey(this)" onblur="blurKey(this)" title="搜索" class="text" />
-            </p>
-            <p>
-              <input id="search_submit" type="image" src="../images/search_button.gif" alt="搜索" />
-            </p>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div id="w3h_body">
-    <div class="body_sidebar">
-      <div class="logo_shadow"></div>
-      <h2 class="category"><span><a href="../home/standards.html">标准</a></span></h2>
-      <ul class="theme">
-        <li><a href="../standards/index.html">W3C 标准</a></li>
-        <li><a href="../home/glossary.html">词汇表</a></li>
-      </ul>
-      <h2 class="category"><span><a href="../home/compatibility.html">兼容性</a></span></h2>
-      <ul class="theme">
-        <li><a href="index.html" class="current">根本原因</a></li>
-        <li><a href="../kb/index.html">知识库</a></li>
-        <li><a href="../casestudies/index.html">案例分析</a></li>
-      </ul>
-    </div>
-    <div class="body_content">
-      <p id="printButton"><a href="javascript:printArticle()" title="打印本文">打印</a></p>
-      <ul class="breadcrumbs">
-        <li><a href="../../index.html" name="top">首页</a> <span>»</span></li>
-        <li><a href="../home/compatibility.html">兼容性</a> <span>»</span></li>
-        <li><a href="index.html">根本原因</a> <span>»</span></li>
-        <li class="current">文章正文</li>
-      </ul>
-      
-    <h1 class="title">BW9012: Chrome Safari 中空行内非替换元素在某些情况下不占用文档流渲染空间</h1>
-  <ul class="toc">
-      <li><a href="#standard_reference">标准参考</a> <span>•</span></li>
-      <li><a href="#description">问题描述</a> <span>•</span></li>
-      <li><a href="#influence">造成的影响</a> <span>•</span></li>
-      <li><a href="#impacted_browsers">受影响的浏览器</a> <span>•</span></li>
-      <li><a href="#analysis_of_issues">问题分析</a> <span>•</span></li>
-      <li><a href="#solutions">解决方案</a> <span>•</span></li>
-      <li><a href="#see_also">参见</a></li>
-    </ul>
-    
-      <div id="w3h_content">
-        
-      <address class="author">作者：钱宝坤</address>
-      <h2 id="standard_reference">标准参考</h2>
-      <p>行内非替换元素的高度由 'line-height' 特性值决定，'margin' 'padding' 'border' 都不加入行内框高度的计算（也不参加线框高度的计算），但是他们还是在行内框周围得到渲染。 </p>
-        <p>具体描述请参考 CSS 2.1 规范的 1<a href="http://www.w3.org/TR/CSS21/visudet.html#leading">0.8.1 Leading and half-leading</a></p>
-        <p>行内非替换元素的宽度不由 'width' 属性决定，他的实际宽度由其中的内容具体宽度决定，如果为空元素，那么宽度的计算值自然也就是 0。</p>
-        <p>具体描述请参考 CSS 2.1 规范的 1<a href="http://www.w3.org/TR/CSS21/visudet.html#propdef-width">10.2 Content width: the 'width' property</a></p>
-        <p>根据标准文档描述可以断定，如果空的行内非替换元素存在 'margin' 'padding' 'border' 值，不管实际宽度是否为 0 ，他都应被渲染出来。</p>
-        <h2 id="description">问题描述</h2>
-      <p>当一个空的内联非替换元素前，存在其他内联元素（包裹匿名内联元素）时，如果他们之间仅存在唯一的空文本节点就有可能导致这个空内联非替换元素消失，不在文档流中占据渲染空间。</p>
-
-      <h2 id="influence">造成的影响</h2>
-      <p>这个问题会导致布局中某小部分内容消失，如果这部分消失的标记具有交互功能，则这个功能将不可能再被用户使用到。</p>
-
-      <h2 id="impacted_browsers">受影响的浏览器</h2>
-      <table class="list">
-        <tr>
-          <th>Chrome Safari</th>
-          <td>&nbsp;</td>
-        </tr>
-      </table>
-
-      <h2 id="analysis_of_issues">问题分析</h2>
-      <p>这个问题发生在普通非替换行内元素上，根据 HTML 4.0 规范定义，一般常用的此类元素有：  A,ABBR<sup>1</sup>,ACRONYM,B,BDO,BIG,CITE,CODE,DEL,DFN,EM,FONT,I,INS,KBD,LABEL,Q,S,SAMP,SMALL,SPAN,STRIKE,STRONG,SUB,SUP,TT,U,VAR 等。</p>
-      <p class="comment">【注】：ABBR 标记在 IE6 浏览器中存在脚本处理问题可参考文章 <a href="BT9023.html">BT9023: IE6 中对 ABBR 元素的相关实现有误</a> ，本文中将不把此元素列为测试范畴。</p>
-      <p>以下代码将通过脚本程序构建这些元素的空标记形式，通过样式表让每个元素都拥有了 'border ‘特性，根据规范他应该给被渲染出来。并且每个元空素绑定 click 事件，如果元素不可见，则可以用以此方式检查该元素是否还可以响应用户事件。代码构建了四组示例，第一组中空标记之前的匿名行内非替换元素与空标记之间存在唯一空文本节点；第二组中两个元素间存在多余一个文本节点， 第三组中个元素与空标记紧密相连，第四组在第一组基础上将标记变为非空情况。</p>
-<pre style="height:300px;overflow-y:auto">
-&lt;style&gt;
-a,acronym,b,bdo,big,cite,code,del,dfn,em,font,i,ins,kbd,label,q,s,samp,small,span,strike,strong,sub,sup,tt,u,var
-{font-size:30px; line-height:50px; border:10px solid #0F0; cursor:pointer;}
-div.info{font-size:12px; line-height:18px; color:#060; background:#EEE;margin:30px 0 30px 0;}
-&lt;/style&gt;
-&lt;script&gt;
-var inlineElements = {
-  'a':'&lt;a&gt;&lt;/a&gt;',
-  'acronym':'&lt;acronym&gt;&lt;/acronym&gt;',
-  'b':'&lt;b&gt;&lt;/b&gt;',
-  'bdo':'&lt;bdo&gt;&lt;/bdo&gt;',
-  'big':'&lt;big&gt;&lt;/big&gt;',
-  'cite':'&lt;cite&gt;&lt;/cite&gt;',
-  'code':'&lt;code&gt;&lt;/code&gt;',
-  'del':'&lt;del&gt;&lt;/del&gt;',
-  'dfn':'&lt;dfn&gt;&lt;/dfn&gt;',
-  'em':'&lt;em&gt;&lt;/em&gt;',
-  'font':'&lt;font&gt;&lt;/font&gt;',
-  'i':'&lt;i&gt;&lt;/i&gt;',
-  'ins':'&lt;ins&gt;&lt;/ins&gt;',
-  'kbd':'&lt;kbd&gt;&lt;/kbd&gt;',
-  'label':'&lt;label&gt;&lt;/label&gt;',
-  'q':'&lt;q&gt;&lt;/q&gt;',
-  's':'&lt;s&gt;&lt;/s&gt;',
-  'samp':'&lt;samp&gt;&lt;/samp&gt;',
-  'small':'&lt;small&gt;&lt;/small&gt;',
-  'span':'&lt;span&gt;&lt;/span&gt;',
-  'strike':'&lt;strike&gt;&lt;/strike&gt;',
-  'strong':'&lt;strong&gt;&lt;/strong&gt;',
-  'sub':'&lt;sub&gt;&lt;/sub&gt;',
-  'sup':'&lt;sup&gt;&lt;/sup&gt;',
-  'tt':'&lt;tt&gt;&lt;/tt&gt;',
-  'u':'&lt;u&gt;&lt;/u&gt;',
-  'var':'&lt;var&gt;&lt;/var&gt;'
-}
-
-function getElementSize(element){
-  return {w:element.offsetWidth,h:element.offsetHeight};
-}
-
-function getStyle(element,styleName){
-  return (element.currentStyle)
-    ?  element.currentStyle[styleName.replace(/-[a-z]/g, function() {
-      return arguments[0].charAt(1).toUpperCase();
-    })]
-    : (document.defaultView &amp;&amp; document.defaultView.getComputedStyle)
-      ? document.defaultView.getComputedStyle(element, null).getPropertyValue(styleName)
-      : null ;
-}
-
-function bindEvent(element,eventName,fn){
-  element[&quot;on&quot;+eventName] = fn;
-}
-
-function buildElementInfo(tagName,element){
-  var elementSize = getElementSize(element);
-  document.writeln('&lt;div class=&quot;info&quot;&gt;');
-  document.writeln(tagName,' 标记的宽为:',elementSize.w,'px; ','标记的高为:',elementSize.w,'px; ', 'display 值为:', getStyle(element,'display'));
-  document.writeln(&quot;&lt;/div&gt;&quot;);
-}
-
-function buildElement(title,type,html){
-  var elementSize,element;
-  document.write(title);
-  for (var i in inlineElements) {
-    document.writeln('&lt;div&gt;');
-    switch(type){
-      case 1:
-        document.writeln(i);
-        document.writeln(&quot; &quot;);
-        break;
-      case 2:
-        document.write(i);
-        break;
-      case 0:
-      case 3:
-        document.writeln(i);
-        break;
-    }
-    document.writeln(inlineElements[i]);
-    document.writeln(&quot;其他文本内容……&quot;);
-    document.writeln('&lt;/div&gt;');
-    element = document.getElementsByTagName(i)[type];
-    element.innerHTML = html;
-    buildElementInfo(i,element);
-    bindEvent(element,&quot;click&quot;,(function(i){return function(){alert(i+&quot; 标记被点击&quot;)}})(i))
-  }
-}
-
-buildElement('&lt;h2&gt;空行内非替换元素前仅存在唯一空文本节点情况&lt;/h2&gt;',0,&quot;&quot;);
-buildElement('&lt;h2&gt;空行内非替换元素前存在不唯一空文本节点情况&lt;/h2&gt;',1,&quot;&quot;);
-buildElement('&lt;h2&gt;空行内非替换元素与前一行内元素紧密相连渲染情况&lt;/h2&gt;',2,&quot;&quot;);
-buildElement('&lt;h2&gt;有文本内容的行内非替换元素非紧密相连渲染情况&lt;/h2&gt;',3,&quot;tag&quot;);
-&lt;/script&gt;
-</pre>
-
-      <p>各浏览器运行结果如下：</p>
-      <table class="compare">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>BW9012: Chrome Safari 中空行内非替换元素在某些情况下不占用文档流渲染空间 - W3Help</title>
+    <meta name="keywords" content="webkit, Chrome, Safari, inline, non-replace, inline, element, 空文本节点, 空非替换行内元素, 渲染,
+        消失, 隐藏">
+    <meta name="description" content="BW9012: Chrome Safari 中空行内非替换元素在某些情况下不占用文档流渲染空间">
+    <link rel="stylesheet" type="text/css" href="../css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/article.css" media="all">
+  </head>
+  <body>
+    <div id="w3h_container">
+      <div id="w3h_header">
+        <div class="header_sidebar">
+          <h1 class="logo"><a href="../../index.html"><span>W3Help</span></a></h1>
+        </div>
+        <div class="header_content">
+          <ul class="navigation">
+            <li class="first_item"><a href="../../index.html">首页</a></li><li><a
+                href="../home/events.html">活动</a></li><li><a href="../home/news.html">新闻</a></li><li><a
+                href="../home/forum.html">论坛</a></li><li class="last_item"><a href="../home/about.html">关于我们</a></li>
+            <li class="search_item">
+              <form action="http://w3help.org/zh-cn/home/search.html" method="get">
+                <p><input name="key" id="keyInput" value="" onfocus="focusKey(this)" onblur="blurKey(this)" title="搜索"
+                    class="text"></p>
+                <p><input id="search_submit" type="image" src="../images/search_button.gif" alt="搜索"></p>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="w3h_body">
+        <div class="body_sidebar">
+          <div class="logo_shadow"></div>
+          <h2 class="category"><span><a href="../home/standards.html">标准</a></span></h2>
+          <ul class="theme"><li><a href="../standards/index.html">W3C 标准</a></li><li><a
+              href="../home/glossary.html">词汇表</a></li></ul>
+          <h2 class="category"><span><a href="../home/compatibility.html">兼容性</a></span></h2>
+          <ul class="theme"><li><a href="index.html" class="current">根本原因</a></li><li><a
+              href="../kb/index.html">知识库</a></li><li><a href="../casestudies/index.html">案例分析</a></li></ul>
+        </div>
+        <div class="body_content">
+          <p id="printButton"><a href="javascript:printArticle()" title="打印本文">打印</a></p>
+          <ul class="breadcrumbs"><li><a href="../../index.html" name="top">首页</a><span>»</span></li><li><a
+              href="../home/compatibility.html">兼容性</a><span>»</span></li><li><a
+              href="index.html">根本原因</a><span>»</span></li><li class="current">文章正文</li></ul>
+          <h1 class="title">BW9012: Chrome Safari 中空行内非替换元素在某些情况下不占用文档流渲染空间</h1>
+          <ul class="toc"><li><a href="#standard_reference">标准参考</a><span>•</span></li><li><a
+              href="#description">问题描述</a><span>•</span></li><li><a href="#influence">造成的影响</a><span>•</span></li><li><a
+              href="#impacted_browsers">受影响的浏览器</a><span>•</span></li><li><a
+              href="#analysis_of_issues">问题分析</a><span>•</span></li><li><a
+              href="#solutions">解决方案</a><span>•</span></li><li><a href="#see_also">参见</a></li></ul>
+          <div id="w3h_content">
+            <address class="author">作者：钱宝坤</address>
+            <h2 id="standard_reference">标准参考</h2>
+            <p>行内非替换元素的高度由 'line-height' 特性值决定，'margin' 'padding' 'border'
+                都不加入行内框高度的计算（也不参加线框高度的计算），但是他们还是在行内框周围得到渲染。</p>
+            <p>具体描述请参考 CSS 2.1 规范的 1<a href="http://www.w3.org/TR/CSS21/visudet.html#leading">0.8.1 Leading and
+                half-leading</a></p>
+            <p>行内非替换元素的宽度不由 'width' 属性决定，他的实际宽度由其中的内容具体宽度决定，如果为空元素，那么宽度的计算值自然也就是 0。</p>
+            <p>具体描述请参考 CSS 2.1 规范的 1<a href="http://www.w3.org/TR/CSS21/visudet.html#propdef-width">10.2 Content width:
+                the 'width' property</a></p>
+            <p>根据标准文档描述可以断定，如果空的行内非替换元素存在 'margin' 'padding' 'border' 值，不管实际宽度是否为 0 ，他都应被渲染出来。</p>
+            <h2 id="description">问题描述</h2>
+            <p>当一个空的内联非替换元素前，存在其他内联元素（包裹匿名内联元素）时，如果他们之间仅存在唯一的空文本节点就有可能导致这个空内联非替换元素消失，不在文档流中占据渲染空间。</p>
+            <h2 id="influence">造成的影响</h2>
+            <p>这个问题会导致布局中某小部分内容消失，如果这部分消失的标记具有交互功能，则这个功能将不可能再被用户使用到。</p>
+            <h2 id="impacted_browsers">受影响的浏览器</h2>
+            <table class="list">
               <tr>
-                <th>&nbsp;</th>
-                <th>IE6 IE7 IE8(Q)</th>
-                <th>IE8(S) Firefox Opera</th>
                 <th>Chrome Safari</th>
+                <td>&nbsp;</td>
               </tr>
-              <tr>
-                <th colspan="4"><span style="height:300px;overflow-y:auto">空行内非替换元素前仅存在唯一空文本节点情况</span></th>
-              </tr>
+            </table>
+            <h2 id="analysis_of_issues">问题分析</h2>
+            <p>这个问题发生在普通非替换行内元素上，根据 HTML 4.0 规范定义，一般常用的此类元素有：
+                A,ABBR<sup>1</sup>,ACRONYM,B,BDO,BIG,CITE,CODE,DEL,DFN,EM,FONT,I,INS,KBD,LABEL,Q,S,SAMP,SMALL,SPAN,STRIKE,STRONG,SUB,SUP,TT,U,VAR 等。</p>
+            <p class="comment">【注】：ABBR 标记在 IE6 浏览器中存在脚本处理问题可参考文章 <a href="BT9023.html">BT9023: IE6 中对 ABBR
+                元素的相关实现有误</a> ，本文中将不把此元素列为测试范畴。</p>
+            <p>以下代码将通过脚本程序构建这些元素的空标记形式，通过样式表让每个元素都拥有了 'border ‘特性，根据规范他应该给被渲染出来。并且每个元空素绑定 click
+                事件，如果元素不可见，则可以用以此方式检查该元素是否还可以响应用户事件。代码构建了四组示例，第一组中空标记之前的匿名行内非替换元素与空标记之间存在唯一空文本节点；第二组中两个元素间存在多余一个文本节点，
+                第三组中个元素与空标记紧密相连，第四组在第一组基础上将标记变为非空情况。</p>
+            <pre style="height:300px;overflow-y:auto">&lt;style&gt;
+                a,acronym,b,bdo,big,cite,code,del,dfn,em,font,i,ins,kbd,label,q,s,samp,small,span,strike,strong,sub,sup,tt,u,var {font-size:30px; line-height:50px; border:10px solid #0F0; cursor:pointer;} div.info{font-size:12px; line-height:18px; color:#060; background:#EEE;margin:30px 0 30px 0;} &lt;/style&gt; &lt;script&gt; var inlineElements = { 'a':'&lt;a&gt;&lt;/a&gt;', 'acronym':'&lt;acronym&gt;&lt;/acronym&gt;', 'b':'&lt;b&gt;&lt;/b&gt;', 'bdo':'&lt;bdo&gt;&lt;/bdo&gt;', 'big':'&lt;big&gt;&lt;/big&gt;', 'cite':'&lt;cite&gt;&lt;/cite&gt;', 'code':'&lt;code&gt;&lt;/code&gt;', 'del':'&lt;del&gt;&lt;/del&gt;', 'dfn':'&lt;dfn&gt;&lt;/dfn&gt;', 'em':'&lt;em&gt;&lt;/em&gt;', 'font':'&lt;font&gt;&lt;/font&gt;', 'i':'&lt;i&gt;&lt;/i&gt;', 'ins':'&lt;ins&gt;&lt;/ins&gt;', 'kbd':'&lt;kbd&gt;&lt;/kbd&gt;', 'label':'&lt;label&gt;&lt;/label&gt;', 'q':'&lt;q&gt;&lt;/q&gt;', 's':'&lt;s&gt;&lt;/s&gt;', 'samp':'&lt;samp&gt;&lt;/samp&gt;', 'small':'&lt;small&gt;&lt;/small&gt;', 'span':'&lt;span&gt;&lt;/span&gt;', 'strike':'&lt;strike&gt;&lt;/strike&gt;', 'strong':'&lt;strong&gt;&lt;/strong&gt;', 'sub':'&lt;sub&gt;&lt;/sub&gt;', 'sup':'&lt;sup&gt;&lt;/sup&gt;', 'tt':'&lt;tt&gt;&lt;/tt&gt;', 'u':'&lt;u&gt;&lt;/u&gt;', 'var':'&lt;var&gt;&lt;/var&gt;' } function getElementSize(element){ return {w:element.offsetWidth,h:element.offsetHeight}; } function getStyle(element,styleName){ return (element.currentStyle) ? element.currentStyle[styleName.replace(/-[a-z]/g, function() { return arguments[0].charAt(1).toUpperCase(); })] : (document.defaultView &amp;&amp; document.defaultView.getComputedStyle) ? document.defaultView.getComputedStyle(element, null).getPropertyValue(styleName) : null ; } function bindEvent(element,eventName,fn){ element[&quot;on&quot;+eventName] = fn; } function buildElementInfo(tagName,element){ var elementSize = getElementSize(element); document.writeln('&lt;div class=&quot;info&quot;&gt;'); document.writeln(tagName,' 标记的宽为:',elementSize.w,'px; ','标记的高为:',elementSize.w,'px; ', 'display 值为:', getStyle(element,'display')); document.writeln(&quot;&lt;/div&gt;&quot;); } function buildElement(title,type,html){ var elementSize,element; document.write(title); for (var i in inlineElements) { document.writeln('&lt;div&gt;'); switch(type){ case 1: document.writeln(i); document.writeln(&quot; &quot;); break; case 2: document.write(i); break; case 0: case 3: document.writeln(i); break; } document.writeln(inlineElements[i]); document.writeln(&quot;其他文本内容……&quot;); document.writeln('&lt;/div&gt;'); element = document.getElementsByTagName(i)[type]; element.innerHTML = html; buildElementInfo(i,element); bindEvent(element,&quot;click&quot;,(function(i){return function(){alert(i+&quot; 标记被点击&quot;)}})(i)) } } buildElement('&lt;h2&gt;空行内非替换元素前仅存在唯一空文本节点情况&lt;/h2&gt;',0,&quot;&quot;); buildElement('&lt;h2&gt;空行内非替换元素前存在不唯一空文本节点情况&lt;/h2&gt;',1,&quot;&quot;); buildElement('&lt;h2&gt;空行内非替换元素与前一行内元素紧密相连渲染情况&lt;/h2&gt;',2,&quot;&quot;); buildElement('&lt;h2&gt;有文本内容的行内非替换元素非紧密相连渲染情况&lt;/h2&gt;',3,&quot;tag&quot;); &lt;/script&gt;</pre>
+            <p>各浏览器运行结果如下：</p>
+            <table class="compare">
+              <tr><th>&nbsp;</th><th>IE6 IE7 IE8(Q)</th><th>IE8(S) Firefox Opera</th><th>Chrome Safari</th></tr>
+              <tr><th colspan="4"><span style="height:300px;overflow-y:auto">空行内非替换元素前仅存在唯一空文本节点情况</span></th></tr>
               <tr>
                 <th>样式是否被渲染</th>
                 <td><span class="hl_4">否</span><sup>1</sup></td>
@@ -225,9 +105,7 @@ buildElement('&lt;h2&gt;有文本内容的行内非替换元素非紧密相连�
                 <td><span class="hl_2">是</span></td>
                 <td><span class="hl_1">否</span><sup>2</sup></td>
               </tr>
-              <tr>
-                <th colspan="4"><span style="height:300px;overflow-y:auto">空行内非替换元素前存在不唯一空文本节点情况</span></th>
-              </tr>
+              <tr><th colspan="4"><span style="height:300px;overflow-y:auto">空行内非替换元素前存在不唯一空文本节点情况</span></th></tr>
               <tr>
                 <th>样式是否被渲染</th>
                 <td><span class="hl_4">否</span><sup>1</sup></td>
@@ -246,9 +124,7 @@ buildElement('&lt;h2&gt;有文本内容的行内非替换元素非紧密相连�
                 <td><span class="hl_2">是</span></td>
                 <td><span class="hl_2">是</span></td>
               </tr>
-              <tr>
-                <th colspan="4"><span style="height:300px;overflow-y:auto">空行内非替换元素与前一行内元素紧密相连渲染情况</span></th>
-              </tr>
+              <tr><th colspan="4"><span style="height:300px;overflow-y:auto">空行内非替换元素与前一行内元素紧密相连渲染情况</span></th></tr>
               <tr>
                 <th>样式是否被渲染</th>
                 <td><span class="hl_4">否</span><sup>2</sup></td>
@@ -267,9 +143,7 @@ buildElement('&lt;h2&gt;有文本内容的行内非替换元素非紧密相连�
                 <td><span class="hl_2">是</span></td>
                 <td><span class="hl_2">是</span></td>
               </tr>
-              <tr>
-                <th colspan="4"><span style="height:300px;overflow-y:auto">有文本内容的行内非替换元素非紧密相连渲染情况</span></th>
-              </tr>
+              <tr><th colspan="4"><span style="height:300px;overflow-y:auto">有文本内容的行内非替换元素非紧密相连渲染情况</span></th></tr>
               <tr>
                 <th>是否被渲染</th>
                 <td><span class="hl_2">是</span></td>
@@ -289,103 +163,89 @@ buildElement('&lt;h2&gt;有文本内容的行内非替换元素非紧密相连�
                 <td><span class="hl_2">是</span></td>
               </tr>
             </table>
-        <br />
-        <p class="comment">【注1】：这是 IE6 IE7 IE8(Q) 的空行内元素渲染问题，可以参考文章：<a href="RD3029.html">RD3029: IE6 IE7 IE8(Q) 的空非替换行内元素渲染方式存在差异。</a></p>
-        <p class="comment">【注2】： Chrome Safari 中要排除 Q 标记的表现情况，因为这个标记会自动向标记内补充双引号作为文本内容，这破坏了本测试用例对空标记渲染检测的原意。</p>
-        <p>根据汇总表格可以看出：</p>
-        <ul>
-            <li>Chrome Safari 中，空非替换行内元素是否被渲染取决于他与前一个行内元素间是否存在唯一的空文本节点，如果唯一则这个空标记不会被渲染出来。此问题明显是 webkit 渲染引擎实现上的一个 Bug 。</li>
-            <li>IE6 IE7 IE8(Q) 在此处仅是标记的边框没渲染，同时无法通过脚本程序得到具体标记宽高，实际上标记依然占据文档流的渲染空间并可以通过前后两个匿名标记的间隔观察出来，同时这个空标记是可被点击的。这说明 IE6 IE7 IE8(Q) 中的现象与元素是否紧密相连无关。</li>
-          <li>IE8(S) Firefox Opera 在这四组测试中均表现正常。</li>
-        </ul>
-        <h2 id="solutions">解决方案</h2>
-      <p>避免使用的空的非替换行内元素，如果必须需要标记内不显示出文本内容，可以使用 'text-indent' 特性将文本负缩进至屏幕外。  </p>
-
-      <h2 id="see_also">参见</h2>
-      <h3>知识库</h3>
-      <ul class="see_also">
-        <li><a href="#">...</a></li>
-      </ul>
-
-      <h3>相关问题</h3>
-      <ul class="see_also">
-        <li><a href="BT9023.html">BT9023: IE6 中对 ABBR 元素的相关实现有误</a></li>
-          <li><a href="RD3029.html">RD3029: IE6 IE7 IE8(Q) 的空非替换行内元素渲染方式存在差异</a></li>
-      </ul>
-
-<div class="appendix">
-        <h2>测试环境</h2>
-        <table class="list">
-          <tr>
-            <th>操作系统版本:</th>
-            <td>Windows 7 Ultimate build 7600</td>
-          </tr>
-          <tr>
-            <th>浏览器版本:</th>
-            <td>
-              IE6<br />
-              IE7<br />
-              IE8<br />
-              Firefox 3.6.10<br />
-              Chrome 7.0.544.0 dev<br />
-              Safari 5.0.2<br />
-              Opera 10.62
-            </td>
-          </tr>
-          <tr>
-            <th>测试页面:</th>
-            <td><a href="../../tests/BW9012/webkit_inline_elment_hidden.html">webkit_inline_elment_hidden.html</a></td>
-          </tr>
-          <tr>
-            <th>本文更新时间:</th>
-            <td>2010-10-09</td>
-          </tr>
-        </table>
-
-        <h2>关键字</h2>  
-        <!-- keywords begin -->
-        <p>webkit Chrome Safari inline non-replace inline element 空文本节点 空非替换行内元素 渲染 消失 隐藏</p>
-        <!-- keywords end -->
-      </div>
-      
-        <div id="forumLink">
-          <div>本篇文章正在公测阶段，错误在所难免，欢迎大家提出宝贵的意见和建议。</div>
-          <a href="http://forum.csdn.net/SList/CrossBrowser/">发表评论 »</a>
+            <br>
+            <p class="comment">【注1】：这是 IE6 IE7 IE8(Q) 的空行内元素渲染问题，可以参考文章：<a href="RD3029.html">RD3029: IE6 IE7 IE8(Q)
+                的空非替换行内元素渲染方式存在差异。</a></p>
+            <p class="comment">【注2】： Chrome Safari 中要排除 Q 标记的表现情况，因为这个标记会自动向标记内补充双引号作为文本内容，这破坏了本测试用例对空标记渲染检测的原意。</p>
+            <p>根据汇总表格可以看出：</p>
+            <ul><li>Chrome Safari 中，空非替换行内元素是否被渲染取决于他与前一个行内元素间是否存在唯一的空文本节点，如果唯一则这个空标记不会被渲染出来。此问题明显是 webkit 渲染引擎实现上的一个
+                Bug 。</li><li>IE6 IE7 IE8(Q)
+                在此处仅是标记的边框没渲染，同时无法通过脚本程序得到具体标记宽高，实际上标记依然占据文档流的渲染空间并可以通过前后两个匿名标记的间隔观察出来，同时这个空标记是可被点击的。这说明 IE6 IE7 IE8(Q)
+                中的现象与元素是否紧密相连无关。</li><li>IE8(S) Firefox Opera 在这四组测试中均表现正常。</li></ul>
+            <h2 id="solutions">解决方案</h2>
+            <p>避免使用的空的非替换行内元素，如果必须需要标记内不显示出文本内容，可以使用 'text-indent' 特性将文本负缩进至屏幕外。</p>
+            <h2 id="see_also">参见</h2>
+            <h3>知识库</h3>
+            <ul class="see_also"><li><a href="#">...</a></li></ul>
+            <h3>相关问题</h3>
+            <ul class="see_also"><li><a href="BT9023.html">BT9023: IE6 中对 ABBR 元素的相关实现有误</a></li><li><a
+                href="RD3029.html">RD3029: IE6 IE7 IE8(Q) 的空非替换行内元素渲染方式存在差异</a></li></ul>
+            <div class="appendix">
+              <h2>测试环境</h2>
+              <table class="list">
+                <tr>
+                  <th>操作系统版本:</th>
+                  <td>Windows 7 Ultimate build 7600</td>
+                </tr>
+                <tr>
+                  <th>浏览器版本:</th>
+                  <td>
+                    IE6
+                    <br>
+                    IE7
+                    <br>
+                    IE8
+                    <br>
+                    Firefox 3.6.10
+                    <br>
+                    Chrome 7.0.544.0 dev
+                    <br>
+                    Safari 5.0.2
+                    <br>
+                    Opera 10.62
+                  </td>
+                </tr>
+                <tr>
+                  <th>测试页面:</th>
+                  <td><a
+                      href="../../tests/BW9012/webkit_inline_elment_hidden.html">webkit_inline_elment_hidden.html</a></td>
+                </tr>
+                <tr>
+                  <th>本文更新时间:</th>
+                  <td>2010-10-09</td>
+                </tr>
+              </table>
+              <h2>关键字</h2>
+              <p>webkit Chrome Safari inline non-replace inline element 空文本节点 空非替换行内元素 渲染 消失 隐藏</p>
+            </div>
+            <div id="forumLink">
+              <div>本篇文章正在公测阶段，错误在所难免，欢迎大家提出宝贵的意见和建议。</div>
+              <a href="http://forum.csdn.net/SList/CrossBrowser/">发表评论 »</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<div id="w3h_footer">
-  <div class="footer_content">
-    <ul>
-      <li><a href="http://www.google.com/"><img src="../logo/google.gif" alt="Google" /></a></li>
-      <li><a href="http://www.chinaw3c.org/"><img src="../logo/w3c-china.gif" alt="W3C-China" /></a></li>
-      <li><a href="http://www.mozillaonline.com/"><img src="../logo/firefox.gif" alt="FireFox" /></a></li>
-      <li><a href="http://www.csdn.net/"><img src="../logo/csdn.gif" alt="CSDN" /></a></li>
-      <li><a href="http://www.w3school.com.cn/"><img src="../logo/w3school.gif" alt="W3School" /></a></li>
-      <li><a href="http://www.w3ctech.com/"><img src="../logo/web-club.gif" alt="w3ctech" /></a></li>
-    </ul>
-    <p class="copyright">
-      <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="知识共享许可协议" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">知识共享署名 3.0 Unported许可协议</a>进行许可。
-      <br /><br /><a href="http://www.miibeian.gov.cn/">京ICP备10208242号</a>
-    </p>
-    <p class="w3cIcon">
-      <a href="http://validator.w3.org/check?uri=referer"><img src="../images/valid-xhtml10.gif" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
-    </p>
-  </div>
-</div>
-<script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-117528009-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-</body>
-
-<!-- Mirrored from w3help.org/zh-cn/causes/BW9012 by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:04:53 GMT -->
+    <div id="w3h_footer">
+      <div class="footer_content">
+        <ul><li><a href="http://www.google.com/"><img src="../logo/google.gif" alt="Google"></a></li><li><a
+            href="http://www.chinaw3c.org/"><img src="../logo/w3c-china.gif" alt="W3C-China"></a></li><li><a
+            href="http://www.mozillaonline.com/"><img src="../logo/firefox.gif" alt="FireFox"></a></li><li><a
+            href="http://www.csdn.net/"><img src="../logo/csdn.gif" alt="CSDN"></a></li><li><a
+            href="http://www.w3school.com.cn/"><img src="../logo/w3school.gif" alt="W3School"></a></li><li><a
+            href="http://www.w3ctech.com/"><img src="../logo/web-club.gif" alt="w3ctech"></a></li></ul>
+        <p class="copyright">
+          <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="知识共享许可协议" style="border-width:0"
+              src="http://i.creativecommons.org/l/by/3.0/88x31.png"></a>
+          <br>
+          本作品采用<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">知识共享署名 3.0 Unported许可协议</a>进行许可。
+          <br>
+          <br>
+          <a href="http://www.miibeian.gov.cn/">京ICP备10208242号</a>
+        </p>
+        <p class="w3cIcon"><a href="http://validator.w3.org/check?uri=referer"><img src="../images/valid-xhtml10.gif"
+            alt="Valid XHTML 1.0 Strict"></a></p>
+      </div>
+    </div>
+  </body>
 </html>

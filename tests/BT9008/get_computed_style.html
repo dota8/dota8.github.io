@@ -1,42 +1,9 @@
 <!DOCTYPE HTML>
 <html>
-
-<!-- Mirrored from w3help.org/tests/BT9008/get_computed_style.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:47 GMT -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<style type="text/css">
-body {
-	color: blue;
-}
-h1 {
-	font-size: 18px;
-	font-family: Verdana;
-}
-h1:after {
-	content: "content";
-	font-weight: normal;
-	font-size: 12px;
-	color: green;
-}
-</style>
-<script type="text/javascript">
-if(!window.getComputedStyle){
-	window.getComputedStyle=function($target){
-		return $target.currentStyle;
-	};
-}
-window.onload=function(){
-	var $header=document.getElementById("header");
-	alert(getComputedStyle($header,null).fontWeight);
-	alert(getComputedStyle($header,null).fontSize);
-	alert(getComputedStyle($header,":after").color);
-	alert(getComputedStyle($header,null).listStyleType);
-}
-</script>
-</head>
-<body>
-	<h1 id="header" style="color:red;">Header 1</h1>
-</body>
-
-<!-- Mirrored from w3help.org/tests/BT9008/get_computed_style.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:47 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <h1 id="header" style="color:red;">Header 1</h1>
+  </body>
 </html>

@@ -1,51 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-
-<!-- Mirrored from w3help.org/tests/HM8003/top.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:10:44 GMT -->
-<head>
-<meta charset="utf-8" />
-<style>
-body{font:16px/1.5 'Verdana' ;}
-</style>
-<script>
-
-window.onload=function(){
-	var tree = "",
-	    string = "";
-
-	function build(){
-		var htmlElement = window.frames["ifr"].document.documentElement;
-		traverse(htmlElement,0);
-		document.getElementById("info").innerHTML += tree;
-
-	}
-
-	function traverse(element,level){
-		var tabs;
-		if (!element.children.length){
-			tabs = "└";
-			tree += new Array(level + 1).join('&nbsp;&nbsp;&nbsp;') + tabs + element.tagName + "<br />";
-			return;
-		}else{
-			tabs = "+";
-			tree += new Array(level + 1).join('---') + tabs + element.tagName + "<br />";
-			level++;
-		}
-		for (var i = 0, l = element.children.length; i < l; i++){
-			traverse( element.children[i] ,level );
-		}
-	}
-	build();
-}
-</script>
-</head>
-<body>
-<iframe name="ifr" src="test.html">
-</iframe>
-<div id="info">
-test.html中 HTML 结点下的结点树形结构如下：<br/>
-</div>
-</body>
-
-<!-- Mirrored from w3help.org/tests/HM8003/top.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:10:45 GMT -->
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <iframe name="ifr" src="test.html"></iframe>
+    <div id="info">
+      test.html中 HTML 结点下的结点树形结构如下：
+      <br>
+    </div>
+  </body>
 </html>

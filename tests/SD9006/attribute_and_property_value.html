@@ -1,33 +1,8 @@
 <!DOCTYPE html>
 <html>
-
-<!-- Mirrored from w3help.org/tests/SD9006/attribute_and_property_value.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:29 GMT -->
-<head>
-<style>
-	input, textarea { font:12px consolas; width:400px; }
-</style>
-<script>
-	function $(id) { return document.getElementById(id); }
-	function addInputEvent(elem, handler, useCapture) {
-		elem.addEventListener ? elem.addEventListener("input", handler, false) :
-			elem.attachEvent("onpropertychange", handler);
-	}
-	window.onload = function () {
-		var psw = $("psw"), cont = $("cont"), ta = $("ta"), txt;
-		var inputing = function () {
-			txt = cont.innerHTML + '\npsw.value:' + psw.value + '\npsw.getAttribute("value"):' + psw.getAttribute("value");
-			ta.value = txt;
-			
-		}
-		addInputEvent(psw, inputing);
-		inputing();
-	}
-</script>
-</head>
-<body>
-	<div id="cont"><input id="psw" type="text" value="old value" /></div>
-	<textarea id="ta" style="height:100px;"></textarea>
-</body>
-
-<!-- Mirrored from w3help.org/tests/SD9006/attribute_and_property_value.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:29 GMT -->
+  <head></head>
+  <body>
+    <div id="cont"><input id="psw" type="text" value="old value"></div>
+    <textarea id="ta" style="height:100px;"></textarea>
+  </body>
 </html>

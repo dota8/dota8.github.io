@@ -1,21 +1,9 @@
 <!DOCTYPE html>
 <html>
-
-<!-- Mirrored from w3help.org/tests/SD9019/innerHTML_iframe_null_src_url.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:31 GMT -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-</head>
-<body>
-<div id="A"></div>
-<script>
-function iframeLoad(iframe){
-	document.body.appendChild(document.createTextNode("IFRAME URL : "+iframe.contentWindow.location.href));
-}
-window.onload = function (){
-	document.getElementById("A").innerHTML = '<iframe id="B" onload="iframeLoad(this)"></iframe>';
-}
-</script>
-</body>
-
-<!-- Mirrored from w3help.org/tests/SD9019/innerHTML_iframe_null_src_url.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:31 GMT -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <div id="A"></div>
+  </body>
 </html>
