@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from w3help.org/tests/SD9006/attribute_and_property_DHTML.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:29 GMT -->
+<head>
+<style>
+	* { font-family:Arial; }
+	div { width:100px; height:100px; background:#eee; font-size:12px; }
+	textarea { width:600px; }
+</style>
+<script>
+	function getStyle(obj) {
+		obj.innerHTML = '.style.cssText=' + (obj.style.cssText).toLowerCase() + 
+			'<br>.getAttribute("style")=' + ("" + obj.getAttribute("style")).toLowerCase();
+	}
+	window.onload = function () {
+		var d = document.getElementById("d");
+		var cont= document.getElementById("cont");
+		var info= document.getElementById("info");
+		var s = 'd.getAttribute("offsetHeight"): ';
+		s += d.getAttribute("offsetHeight") + "\n";
+		d.setAttribute("innerHTML", "other text");
+		info.value = s + cont.innerHTML;
+	}
+</script>
+</head>
+<body>
+	<div id="cont"><div id="d">text text text text text text text</div></div>
+	<textarea id="info"></textarea>
+</body>
+
+<!-- Mirrored from w3help.org/tests/SD9006/attribute_and_property_DHTML.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:29 GMT -->
+</html>

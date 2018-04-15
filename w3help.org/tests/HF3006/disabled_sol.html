@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from w3help.org/tests/HF3006/disabled_sol.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:10:45 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<input type="text" id="a" />
+<input type="text" id="i" value="www" disabled style="color:#aaa; background:#eaeaea;" />
+<script>
+	function $(id) { return document.getElementById(id); }
+	var a = $('a');
+	var i = $('i');
+	a.focus();
+	var f = document.activeElement;
+	i.disabled = false;
+	i.focus();
+	f.focus();
+</script>
+</body>
+
+<!-- Mirrored from w3help.org/tests/HF3006/disabled_sol.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:10:45 GMT -->
+</html>

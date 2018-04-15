@@ -1,0 +1,14 @@
+<style>* { font:16px Arial; }</style>
+
+<!-- Mirrored from w3help.org/tests/HO9006/object_mp.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:10:37 GMT -->
+<body>
+<div id="do" style="background:gray; width:100px; height:100px;"></div>
+<script>
+    var oo = document.createElement("object");
+    oo.setAttribute("classid", "clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6");
+    oo.style.width = "100%";
+    oo.style.height = "100%";
+    document.getElementById("do").appendChild(oo);
+    document.write("settings:" + typeof oo.settings);
+</script>
+</body>

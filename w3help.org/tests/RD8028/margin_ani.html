@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from w3help.org/tests/RD8028/margin_ani.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:02 GMT -->
+<head>
+<meta charset="utf-8" />
+<script>
+	function $(id) { return document.getElementById(id); }
+	var k = 0, a, b, c, info;
+	window.onload = function () {
+		a = $('a'), b = $('b'), c = $('c'), info = $("info");
+		setInterval(function () {
+			b.style.marginLeft = --k + 'px';
+			(k == -150) && (k = 0);
+			info.innerHTML = "&nbsp;+--[a]: " + a.clientWidth
+				+ "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--[b]: " + b.clientWidth
+				+ "<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+--[c]: " + c.clientWidth;
+		}, 50);
+	}
+</script>
+</head>
+<body style="margin:0; font:14px/1.2 'Lucida Console';">
+<div style="width:0; background:skyblue; margin-left:150px; border:10px solid crimson;" id="a">
+	<div style="background:wheat; margin-left:-150px; border:10px solid black; position:relative; zoom:1;" id="b">
+		<div style="width:100px; height:100px; background:limegreen;" id="c"></div>
+	</div>
+</div>
+<div id="info"></div>
+</body>
+
+<!-- Mirrored from w3help.org/tests/RD8028/margin_ani.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:02 GMT -->
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from w3help.org/tests/RX9016/image_getElementsByTagName.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:24 GMT -->
+<head>
+<script>
+	function $(id) { return document.getElementById(id); }
+	
+	window.onload = function () {
+		$('info').appendChild(document.createTextNode("IMAGE elements: " + document.getElementsByTagName('image').length));
+		$('info').appendChild(document.createElement('br'));
+		$('info').appendChild(document.createTextNode("IMG elements: " + document.getElementsByTagName('img').length));
+	}
+</script>
+</head>
+<body style="font:14px 'Trebuchet MS';">
+<img src="google.gif" />
+<image src="google.gif" />
+<div id="info"></div>
+</body>
+
+<!-- Mirrored from w3help.org/tests/RX9016/image_getElementsByTagName.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:24 GMT -->
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from w3help.org/tests/SD9005/dom_bom_native_method_bind.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:29 GMT -->
+<head>
+</head>
+<body>
+<div id="d1">Div Element</div>
+<script type="text/javascript">
+    var $1 = function(id){return document.getElementById(id);};
+    var $2 = document.getElementById;
+
+    alert($1('d1'));
+    alert($2('d1'));
+
+document.getElementById = (function(fn){
+    return function(){ 
+        return fn.apply(document,arguments);
+    };
+})(document.getElementById);
+
+var $2 = document.getElementById;
+
+</script>
+</body>
+
+<!-- Mirrored from w3help.org/tests/SD9005/dom_bom_native_method_bind.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Feb 2018 16:11:29 GMT -->
+</html>
